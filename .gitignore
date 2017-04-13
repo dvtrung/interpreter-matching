@@ -1,0 +1,5 @@
+TranslatorMatching/app/cache
+.idea
+.DS_Store
+app/cache
+vendor

@@ -1,0 +1,89 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="col-lg-6">
+            <h2>Need An Interpreter?</h2>
+            <p>Find a professional interpreter among our many verified profiles. Take the best preparation for your working trip! </p>
+            <p><a class="btn btn-primary btn-lg" href="<?=get_url("search/interpreter")?>" role="button">Find An Interpreter »</a> 
+                <a class="btn btn-primary btn-lg" href="<?=get_url("search/job")?>" role="button">Find A Job »</a></p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box">
+                <i class="fa fa-4x fa-paper-plane wow bounceIn text-primary" data-wow-delay=".1s" style="visibility: visible; animation-delay: 0.1s; animation-name: bounceIn;"></i>
+                <h3>Fast</h3>
+                <p class="text-muted">You write your request, we find your people.</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box">
+                <i class="fa fa-4x fa-hand-o-up wow bounceIn text-primary" data-wow-delay=".3s" style="visibility: visible; animation-delay: 0.3s; animation-name: bounceIn;"></i>
+                <h3>Simple</h3>
+                <p class="text-muted">Easily find an interpreter for your purpose.</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box">
+                <i class="fa fa-4x fa-money wow bounceIn text-primary" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: bounceIn;"></i>
+                <h3>Cheap</h3>
+                <p class="text-muted">Best candidates with reasonable pay.</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box">
+                <i class="fa fa-4x fa-diamond wow bounceIn text-primary" style="visibility: visible; animation-name: bounceIn;"></i>
+                <h3>Reliable</h3>
+                <p class="text-muted">A lot of verified interpreters all around the world.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="container">
+    <?php
+    $places = array("Vietnam", "Japan", "Korea", "China", "America", "England");
+    $place_images = array("hanoi.jpg", "tokyo.jpg", "seoul.jpg", "beijing.jpg", "newyork.jpg", "london.jpg");
+    $captions = array("Hanoi", "Tokyo", "Seoul", "Beijing", "New York", "London")
+    ?>
+    <div class="row">
+        <h3>Find An Interpreters for your Business Trip</h3>
+        <?php
+        for ($i = 0;
+                $i < count($places);
+                $i++):
+          ?>
+          <div class="col-lg-4 col-sm-6">
+              <a href="<?=get_url("search/interpreter/").'?loc='.urlencode($captions[$i])?>" class="portfolio-box">
+                  <img src="<?= get_static_url("img/places/" . $place_images[$i]) ?>" class="img-responsive" alt="">
+                  <div class="portfolio-box-caption">
+                      <div class="portfolio-box-caption-content">
+                          <div class="project-category text-faded"><?= $places[$i] ?></div>
+                          <div class="project-name"><?= $captions[$i] ?></div>
+                      </div>
+                  </div>
+              </a>
+          </div>
+<?php endfor; ?>
+    </div>
+</div>
+<hr>
+<div class="container">
+    <div class="row text-center">
+        <div class="col-lg-4">
+            <h4>Supported Language</h4>
+            <h3>5</h3>
+        </div>
+        <div class="col-lg-4">
+            <h4>Registered Interpreters</h4>
+            <h3><?=Interpreters::findFirst(array("columns" => "COUNT(*)"))->toArray()[0]?></h3>
+        </div>
+        <div class="col-lg-4">
+            <h4>Jobs</h4>
+            <h3><?=Jobs::findFirst(array("columns" => "COUNT(*)"))->toArray()[0]?></h3>
+        </div>
+    </div>
+</div>
+
